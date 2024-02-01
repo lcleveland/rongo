@@ -8,13 +8,13 @@ use crate::line::rarity::Rarity;
 /// Conditions are used to determine if an item should be shown or hidden or have an [crate::line::action::Action] applied to it
 pub enum Condition {
     /// Filters for items dropped in a particular Monster level of the current area.
-    AreaLevel(AreaLevel),
+    AreaLevel((Operator, u8)),
     /// The item level the item was generated at
-    ItemLevel(ItemLevel),
+    ItemLevel((Operator, u8)),
     /// The level that the item starts dropping at
-    DropLevel(DropLevel),
+    DropLevel((Operator, u8)),
     /// The amount of quality on the item
-    Quality(Quality),
+    Quality((Operator, u8)),
     /// The [Rarity] of the item
     Rarity(Rarity),
     /// The item class. Specifying part of a class name is allowed and will match any classes with that text in the name
@@ -26,13 +26,13 @@ pub enum Condition {
     /// The size of the largest group of linked sockets that the item has.
     LinkedSockets(u8),
     /// Supports a list of groups that each one represents linked sockets containing a specific set of colors, at least one group must be matched for the condition to pass.
-    SocketGroup(SocketGroup),
+    SocketGroup((Operator, String, u8)),
     /// Does the exact same thing as [SocketGroup] but does not require the sockets to be linked.
-    Sockets(Sockets),
+    Sockets((Operator, String, u8)),
     /// The number of slots the item takes on the Y-axis (verical axis), i.e. the height of the item.
-    Height(Height),
+    Height((Operator, u8)),
     /// The number of slots the item takes on the X-axis (horizontal axis), i.e. the width of the item.
-    Width(Width),
+    Width((Operator, u8)),
     /// Filter by mods on an item by name.
     HasExplicitMod(String),
     /// If an item has any enchantment from the Labyrinth.
@@ -40,11 +40,11 @@ pub enum Condition {
     /// Filter Cluster Jewels by enchantment type.
     EnchantmentPassiveNode(String),
     /// Filter Cluster Jewels by the number of enchantments. Only checks the "Adds X passive skills" modifier.
-    EnchantmentPassiveNum(EnchantmentPassiveNum),
+    EnchantmentPassiveNum((Operator, u8)),
     /// Currency stack size.
-    StackSize(StackSize),
+    StackSize((Operator, u8)),
     /// The level of the gem.
-    GemLevel(GemLevel),
+    GemLevel((Operator, u8)),
     /// The [GemQuality] of the gem.
     GemQualityType(GemQuality),
     /// If an item has alternate quality or not.
@@ -56,7 +56,7 @@ pub enum Condition {
     /// If an item is corrupted or not.
     Corrupted(bool),
     /// How many corrupted mods are present.
-    CorruptedMods(CorruptedMods),
+    CorruptedMods((Operator, u8)),
     /// If an item is mirrored or not.
     Mirrored(bool),
     /// If an item is an Elder Item or not.
@@ -76,85 +76,5 @@ pub enum Condition {
     /// If the map is Blighted or not.
     BlightedMap(bool),
     /// The map tier of the map.
-    MapTier(MapTier),
-}
-
-#[derive(Debug)]
-pub struct AreaLevel {
-    pub operator: Operator,
-    pub value: u8,
-}
-
-#[derive(Debug)]
-pub struct ItemLevel {
-    pub operator: Operator,
-    pub value: u8,
-}
-
-#[derive(Debug)]
-pub struct DropLevel {
-    pub operator: Operator,
-    pub value: u8,
-}
-
-#[derive(Debug)]
-pub struct Quality {
-    pub operator: Operator,
-    pub value: u8,
-}
-
-#[derive(Debug)]
-pub struct SocketGroup {
-    pub operator: Operator,
-    pub color: String,
-    pub longest_link: u8,
-}
-
-#[derive(Debug)]
-pub struct Sockets {
-    pub operator: Operator,
-    pub color: String,
-    pub number_sockets: u8,
-}
-
-#[derive(Debug)]
-pub struct Height {
-    pub operator: Operator,
-    pub value: u8,
-}
-
-#[derive(Debug)]
-pub struct Width {
-    pub operator: Operator,
-    pub value: u8,
-}
-
-#[derive(Debug)]
-pub struct EnchantmentPassiveNum {
-    pub operator: Operator,
-    pub value: u8,
-}
-
-#[derive(Debug)]
-pub struct StackSize {
-    pub operator: Operator,
-    pub value: u8,
-}
-
-#[derive(Debug)]
-pub struct GemLevel {
-    pub operator: Operator,
-    pub value: u8,
-}
-
-#[derive(Debug)]
-pub struct CorruptedMods {
-    pub operator: Operator,
-    pub value: GemQuality,
-}
-
-#[derive(Debug)]
-pub struct MapTier {
-    pub operator: Operator,
-    pub value: String,
+    MapTier((Operator, u8)),
 }
