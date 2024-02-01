@@ -1,23 +1,41 @@
+//! Conditions are used to determine if an item should be shown or hidden or have an [crate::line::action::Action] applied to it
+
 use crate::line::gem_quality::GemQuality;
 use crate::line::influence::Influence;
 use crate::line::operator::Operator;
 use crate::line::rarity::Rarity;
 #[derive(Debug)]
+/// Conditions are used to determine if an item should be shown or hidden or have an [crate::line::action::Action] applied to it
 pub enum Condition {
+    /// Filters for items dropped in a particular Monster level of the current area.
     AreaLevel(AreaLevel),
+    /// The item level the item was generated at
     ItemLevel(ItemLevel),
+    /// The level that the item starts dropping at
     DropLevel(DropLevel),
+    /// The amount of quality on the item
     Quality(Quality),
+    /// The [Rarity] of the item
     Rarity(Rarity),
+    /// The item class. Specifying part of a class name is allowed and will match any classes with that text in the name
     Class(String),
+    /// The base type of the item. Specifying a part of a base type name is allowed and will match any of the base types with that text in the name.
     BaseType(String),
+    /// The prophecy name. Specifying a part of a prophecy name is allowed and will match any of the prophecies with that text in the name. Prophecies have the Class type "Stackable Currency".
     Prophecy(String),
+    /// The size of the largest group of linked sockets that the item has.
     LinkedSockets(u8),
+    /// Supports a list of groups that each one represents linked sockets containing a specific set of colors, at least one group must be matched for the condition to pass.
     SocketGroup(SocketGroup),
+    /// Does the exact same thing as [SocketGroup] but does not require the sockets to be linked.
     Sockets(Sockets),
+    /// The number of slots the item takes on the Y-axis (verical axis), i.e. the height of the item.
     Height(Height),
+    /// The number of slots the item takes on the X-axis (horizontal axis), i.e. the width of the item.
     Width(Width),
+    /// Filter by mods on an item by name.
     HasExplicitMod(String),
+    /// If an item has any enchantment from the Labyrinth.
     AnyEnchantment(bool),
     EnchantmentPassiveNode(String),
     EnchantmentPassiveNum(EnchantmentPassiveNum),
