@@ -1,12 +1,21 @@
+//! Influence
 use std::fmt;
 #[derive(Debug)]
+/// Influence
 pub enum Influence {
+    /// Shaper
     Shaper,
+    /// Elder
     Elder,
+    /// Crusader
     Crusader,
+    /// Hunter
     Hunter,
+    /// Redeemer
     Redeemer,
+    /// Warlord
     Warlord,
+    /// None
     None,
 }
 

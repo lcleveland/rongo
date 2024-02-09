@@ -1,9 +1,15 @@
+//! Item rarity
 use std::fmt;
 #[derive(Debug)]
+/// The rarity of an item
 pub enum Rarity {
+    /// Normal
     Normal,
+    /// Magic
     Magic,
+    /// Rare
     Rare,
+    /// Unique
     Unique,
 }
 

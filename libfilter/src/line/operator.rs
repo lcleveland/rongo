@@ -1,11 +1,20 @@
+//! Operator
 use std::fmt;
+
 #[derive(Debug)]
+/// Operator
 pub enum Operator {
+    /// >
     GreaterThan,
+    /// >=
     GreaterThanOrEqual,
+    /// <
     LessThan,
+    /// <=
     LessThanOrEqual,
+    /// ==
     Equal,
+    /// !=
     NotEqual,
 }
 
