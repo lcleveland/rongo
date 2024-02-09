@@ -136,49 +136,48 @@ pub enum Condition {
 impl fmt::Display for Condition {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            Condition::AreaLevel((op, val)) => write!(f, "AreaLevel {} {}", op, val)?,
-            Condition::ItemLevel((op, val)) => write!(f, "ItemLevel {} {}", op, val)?,
-            Condition::DropLevel((op, val)) => write!(f, "DropLevel {} {}", op, val)?,
-            Condition::Quality((op, quality)) => write!(f, "Quality {} {}", op, quality)?,
-            Condition::Rarity((op, rarity)) => write!(f, "Rarity {} {}", op, rarity)?,
-            Condition::Class(val) => write!(f, "Class \"{}\"", val)?,
-            Condition::BaseType(val) => write!(f, "BaseType \"{}\"", val)?,
-            Condition::Prophecy(val) => write!(f, "Prophecy \"{}\"", val)?,
-            Condition::LinkedSockets((op, val)) => write!(f, "LinkedSockets {} {}", op, val)?,
+            Condition::AreaLevel((op, val)) => write!(f, "AreaLevel {} {}", op, val),
+            Condition::ItemLevel((op, val)) => write!(f, "ItemLevel {} {}", op, val),
+            Condition::DropLevel((op, val)) => write!(f, "DropLevel {} {}", op, val),
+            Condition::Quality((op, quality)) => write!(f, "Quality {} {}", op, quality),
+            Condition::Rarity((op, rarity)) => write!(f, "Rarity {} {}", op, rarity),
+            Condition::Class(val) => write!(f, "Class \"{}\"", val),
+            Condition::BaseType(val) => write!(f, "BaseType \"{}\"", val),
+            Condition::Prophecy(val) => write!(f, "Prophecy \"{}\"", val),
+            Condition::LinkedSockets((op, val)) => write!(f, "LinkedSockets {} {}", op, val),
             Condition::SocketGroup((op, val, count)) => {
-                write!(f, "SocketGroup {} {} {}", op, val, count)?
+                write!(f, "SocketGroup {} {} {}", op, val, count)
             }
-            Condition::Sockets((op, val, count)) => write!(f, "Sockets {} {} {}", op, val, count)?,
-            Condition::Height((op, val)) => write!(f, "Height {} {}", op, val)?,
-            Condition::Width((op, val)) => write!(f, "Width {} {}", op, val)?,
-            Condition::HasExplicitMod(val) => write!(f, "HasExplicitMod \"{}\"", val)?,
-            Condition::AnyEnchantment(val) => write!(f, "AnyEnchantment {}", val)?,
-            Condition::HasEnchantment(val) => write!(f, "HasEnchantment \"{}\"", val)?,
+            Condition::Sockets((op, val, count)) => write!(f, "Sockets {} {} {}", op, val, count),
+            Condition::Height((op, val)) => write!(f, "Height {} {}", op, val),
+            Condition::Width((op, val)) => write!(f, "Width {} {}", op, val),
+            Condition::HasExplicitMod(val) => write!(f, "HasExplicitMod \"{}\"", val),
+            Condition::AnyEnchantment(val) => write!(f, "AnyEnchantment {}", val),
+            Condition::HasEnchantment(val) => write!(f, "HasEnchantment \"{}\"", val),
             Condition::EnchantmentPassiveNode(val) => {
-                write!(f, "EnchantmentPassiveNode \"{}\"", val)?
+                write!(f, "EnchantmentPassiveNode \"{}\"", val)
             }
             Condition::EnchantmentPassiveNum((op, val)) => {
-                write!(f, "EnchantmentPassiveNum {} {}", op, val)?
+                write!(f, "EnchantmentPassiveNum {} {}", op, val)
             }
-            Condition::StackSize((op, val)) => write!(f, "StackSize {} {}", op, val)?,
-            Condition::GemLevel((op, val)) => write!(f, "GemLevel {} {}", op, val)?,
-            Condition::GemQualityType(val) => write!(f, "GemQualityType {}", val)?,
-            Condition::AlternativeQuality(val) => write!(f, "AlternativeQuality {}", val)?,
-            Condition::Replica(val) => write!(f, "Replica {}", val)?,
-            Condition::Identified(val) => write!(f, "Identified {}", val)?,
-            Condition::Corrupted(val) => write!(f, "Corrupted {}", val)?,
-            Condition::CorruptedMods((op, val)) => write!(f, "CorruptedMods {} {}", op, val)?,
-            Condition::Mirrored(val) => write!(f, "Mirrored {}", val)?,
-            Condition::ElderItem(val) => write!(f, "ElderItem {}", val)?,
-            Condition::ShaperItem(val) => write!(f, "ShaperItem {}", val)?,
-            Condition::HasInfluence(val) => write!(f, "HasInfluence {}", val)?,
-            Condition::FracturedItem(val) => write!(f, "FracturedItem {}", val)?,
-            Condition::SynthesisedItem(val) => write!(f, "SynthesisedItem {}", val)?,
-            Condition::ElderMap(val) => write!(f, "ElderMap {}", val)?,
-            Condition::ShapedMap(val) => write!(f, "ShapedMap {}", val)?,
-            Condition::BlightedMap(val) => write!(f, "BlightedMap {}", val)?,
-            Condition::MapTier((op, val)) => write!(f, "MapTier {} {}", op, val)?,
+            Condition::StackSize((op, val)) => write!(f, "StackSize {} {}", op, val),
+            Condition::GemLevel((op, val)) => write!(f, "GemLevel {} {}", op, val),
+            Condition::GemQualityType(val) => write!(f, "GemQualityType {}", val),
+            Condition::AlternativeQuality(val) => write!(f, "AlternativeQuality {}", val),
+            Condition::Replica(val) => write!(f, "Replica {}", val),
+            Condition::Identified(val) => write!(f, "Identified {}", val),
+            Condition::Corrupted(val) => write!(f, "Corrupted {}", val),
+            Condition::CorruptedMods((op, val)) => write!(f, "CorruptedMods {} {}", op, val),
+            Condition::Mirrored(val) => write!(f, "Mirrored {}", val),
+            Condition::ElderItem(val) => write!(f, "ElderItem {}", val),
+            Condition::ShaperItem(val) => write!(f, "ShaperItem {}", val),
+            Condition::HasInfluence(val) => write!(f, "HasInfluence {}", val),
+            Condition::FracturedItem(val) => write!(f, "FracturedItem {}", val),
+            Condition::SynthesisedItem(val) => write!(f, "SynthesisedItem {}", val),
+            Condition::ElderMap(val) => write!(f, "ElderMap {}", val),
+            Condition::ShapedMap(val) => write!(f, "ShapedMap {}", val),
+            Condition::BlightedMap(val) => write!(f, "BlightedMap {}", val),
+            Condition::MapTier((op, val)) => write!(f, "MapTier {} {}", op, val),
         }
-        write!(f, "{:?}", self)
     }
 }
