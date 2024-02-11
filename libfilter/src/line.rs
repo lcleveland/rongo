@@ -7,6 +7,7 @@ pub mod influence;
 pub mod operator;
 pub mod rarity;
 pub mod rgba;
+pub mod size;
 #[derive(Debug)]
 /// The lowest component of a filter
 pub enum Line {

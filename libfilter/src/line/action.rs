@@ -1,6 +1,7 @@
 //! Actions that a line can specify
 
 use crate::line::rgba::RGBA;
+use crate::line::size::Size;
 use std::fmt;
 
 #[derive(Debug)]
@@ -28,30 +29,6 @@ pub enum Action {
     MinimapIcon((Size, Color, Shape)),
     /// Play an effect
     PlayEffect((Color, bool)),
-}
-
-#[derive(Debug)]
-/// The size of the minimap icon
-pub enum Size {
-    /// Disable the minimap icon
-    Disable,
-    /// Small icon
-    Small,
-    /// Medium icon
-    Medium,
-    /// Largest icon
-    Largest,
-}
-
-impl fmt::Display for Size {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        match self {
-            Size::Disable => write!(f, "Disable"),
-            Size::Small => write!(f, "Small"),
-            Size::Medium => write!(f, "Medium"),
-            Size::Largest => write!(f, "Largest"),
-        }
-    }
 }
 
 #[derive(Debug)]
