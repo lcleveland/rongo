@@ -1,12 +1,14 @@
 //! A line in a filter
 
 pub mod action;
+pub mod color;
 pub mod condition;
 pub mod gem_quality;
 pub mod influence;
 pub mod operator;
 pub mod rarity;
 pub mod rgba;
+pub mod shape;
 pub mod size;
 #[derive(Debug)]
 /// The lowest component of a filter

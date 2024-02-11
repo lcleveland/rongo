@@ -1,6 +1,8 @@
 //! Actions that a line can specify
 
+use crate::line::color::Color;
 use crate::line::rgba::RGBA;
+use crate::line::shape::Shape;
 use crate::line::size::Size;
 use std::fmt;
 
@@ -29,102 +31,6 @@ pub enum Action {
     MinimapIcon((Size, Color, Shape)),
     /// Play an effect
     PlayEffect((Color, bool)),
-}
-
-#[derive(Debug)]
-/// Predefined colors for the minimap icon and light beam
-pub enum Color {
-    /// Red
-    Red,
-    /// Green
-    Green,
-    /// Blue
-    Blue,
-    /// Brown
-    Brown,
-    /// White
-    White,
-    /// Yellow
-    Yellow,
-    /// Cyan
-    Cyan,
-    /// Grey
-    Grey,
-    /// Orange
-    Orange,
-    /// Pink
-    Pink,
-    /// Purple
-    Purple,
-    /// No color
-    None,
-}
-
-impl fmt::Display for Color {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        match self {
-            Color::Red => write!(f, "Red"),
-            Color::Green => write!(f, "Green"),
-            Color::Blue => write!(f, "Blue"),
-            Color::Brown => write!(f, "Brown"),
-            Color::White => write!(f, "White"),
-            Color::Yellow => write!(f, "Yellow"),
-            Color::Cyan => write!(f, "Cyan"),
-            Color::Grey => write!(f, "Grey"),
-            Color::Orange => write!(f, "Orange"),
-            Color::Pink => write!(f, "Pink"),
-            Color::Purple => write!(f, "Purple"),
-            Color::None => write!(f, "None"),
-        }
-    }
-}
-
-#[derive(Debug)]
-/// Predefined shapes for the minimap icon
-pub enum Shape {
-    /// Circle
-    Circle,
-    /// Diamond
-    Diamond,
-    /// Hexagon
-    Hexagon,
-    /// Square
-    Square,
-    /// Star
-    Star,
-    /// Triangle
-    Triangle,
-    /// Cross
-    Cross,
-    /// Moon
-    Moon,
-    /// Raindrop
-    Raindrop,
-    /// Kite
-    Kite,
-    /// Pentagon
-    Pentagon,
-    /// Upside down house
-    UpsideDownHouse,
-}
-
-impl fmt::Display for Shape {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        match self {
-            Shape::Circle => write!(f, "Circle"),
-            Shape::Diamond => write!(f, "Diamond"),
-            Shape::Hexagon => write!(f, "Hexagon"),
-            Shape::Square => write!(f, "Square"),
-            Shape::Star => write!(f, "Star"),
-            Shape::Triangle => write!(f, "Triangle"),
-            Shape::Cross => write!(f, "Cross"),
-            Shape::Moon => write!(f, "Moon"),
-            Shape::Raindrop => write!(f, "Raindrop"),
-            Shape::Kite => write!(f, "Kite"),
-            Shape::Pentagon => write!(f, "Pentagon"),
-            Shape::UpsideDownHouse => write!(f, "UpsideDownHouse"),
-        }
-    }
 }
 
 impl fmt::Display for Action {
