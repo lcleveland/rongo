@@ -6,6 +6,7 @@ pub mod filter;
 pub mod line;
 pub mod section;
 
+// Re-exports
 pub use crate::line::color::Color;
 pub use crate::line::gem_quality::GemQuality;
 pub use crate::line::influence::Influence;
