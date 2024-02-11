@@ -10,33 +10,65 @@ use std::fmt;
 pub enum Condition {
     /// Filters for items dropped in a particular Monster level of the current area.
     ///
-    /// `Operator`: A value from the [crate::line::operator::Operator] enum.
-    ///
+    /// `Operator`: A value from the [Operator] enum.
     /// `u8`: The value to test.
+    /// # Example
+    /// ```
+    /// # use libfilter::Operator;
+    /// # use libfilter::line::condition::Condition;
+    /// let area_level = Condition::AreaLevel((Operator::GreaterThan, 1));
+    /// # assert_eq!(area_level.to_string(), "AreaLevel > 1");
+    /// ```
     AreaLevel((Operator, u8)),
 
     /// The item level the item was generated at.
     ///
-    /// `Operator`: A value from the [crate::line::operator::Operator] enum.
-    ///
+    /// `Operator`: A value from the [Operator] enum.
     /// `u8`: The value to test.
+    /// # Example
+    /// ```
+    /// # use libfilter::Operator;
+    /// # use libfilter::line::condition::Condition;
+    /// let item_level = Condition::ItemLevel((Operator::GreaterThan, 1));
+    /// # assert_eq!(item_level.to_string(), "ItemLevel > 1");
+    /// ```
     ItemLevel((Operator, u8)),
 
     /// The level that the item starts dropping at.
     ///
-    /// `Operator`: A value from the [crate::line::operator::Operator] enum.
-    ///
+    /// `Operator`: A value from the [Operator] enum.
     /// `u8`: The value to test.
+    /// # Example
+    /// ```
+    /// # use libfilter::Operator;
+    /// # use libfilter::line::condition::Condition;
+    /// let drop_level = Condition::DropLevel((Operator::GreaterThan, 1));
+    /// # assert_eq!(drop_level.to_string(), "DropLevel > 1");
     DropLevel((Operator, u8)),
 
     /// The amount of quality on the item.
     ///
-    /// `Operator`: A value from the [crate::line::operator::Operator] enum.
-    ///
+    /// `Operator`: A value from the [Operator] enum.
     /// `u8`: The value to test.
+    /// # Example
+    /// ```
+    /// # use libfilter::Operator;
+    /// # use libfilter::line::condition::Condition;
+    /// let quality = Condition::Quality((Operator::GreaterThan, 1));
+    /// # assert_eq!(quality.to_string(), "Quality > 1");
     Quality((Operator, u8)),
 
     /// The [Rarity] of the item.
+    ///
+    /// `Operator`: A value from the [Operator] enum.
+    /// `Rarity`: The [Rarity] to test.
+    /// # Example
+    /// ```
+    /// # use libfilter::{Operator, Rarity};
+    /// # use libfilter::line::condition::Condition;
+    /// let rarity = Condition::Rarity((Operator::GreaterThan, Rarity::Normal));
+    /// # assert_eq!(rarity.to_string(), "Rarity > Normal");
+    /// ```
     Rarity((Operator, Rarity)),
 
     /// The item class. Specifying part of a class name is allowed and will match any classes with that text in the name.
