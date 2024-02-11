@@ -72,6 +72,13 @@ pub enum Condition {
     Rarity((Operator, Rarity)),
 
     /// The item class. Specifying part of a class name is allowed and will match any classes with that text in the name.
+    ///
+    /// `String`: The name of the class to match.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let class = Condition::Class(String::from("One Handed"));
+    /// # assert_eq!(class.to_string(), "Class \"One Handed\"");
     Class(String),
 
     /// The base type of the item. Specifying a part of a base type name is allowed and will match any of the base types with that text in the name.
