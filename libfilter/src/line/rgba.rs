@@ -2,6 +2,13 @@
 use std::fmt;
 #[derive(Debug)]
 /// Defines colors with an alpha channel.
+///
+/// # Examples
+/// ```
+/// use libfilter::RGBA;
+/// let rgba = RGBA { r: 0, g: 0, b: 0, a: 255 };
+/// # assert_eq!(rgba.to_string(), "0 0 0 255");
+/// ```
 pub struct RGBA {
     /// The red value.
     pub r: u8,
