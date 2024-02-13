@@ -5,16 +5,63 @@ use std::fmt;
 /// Operator
 pub enum Operator {
     /// >
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Operator;
+    /// let operator = Operator::GreaterThan;
+    /// # assert_eq!(operator.to_string(), ">");
+    /// ```
     GreaterThan,
+
     /// >=
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Operator;
+    /// let operator = Operator::GreaterThanOrEqual;
+    /// # assert_eq!(operator.to_string(), ">=");
+    /// ```
     GreaterThanOrEqual,
+
     /// <
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Operator;
+    /// let operator = Operator::LessThan;
+    /// # assert_eq!(operator.to_string(), "<");
+    /// ```
     LessThan,
+
     /// <=
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Operator;
+    /// let operator = Operator::LessThanOrEqual;
+    /// # assert_eq!(operator.to_string(), "<=");
+    /// ```
     LessThanOrEqual,
+
     /// ==
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Operator;
+    /// let operator = Operator::Equal;
+    /// # assert_eq!(operator.to_string(), "==");
+    /// ```
     Equal,
+
     /// !=
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Operator;
+    /// let operator = Operator::NotEqual;
+    /// # assert_eq!(operator.to_string(), "!=");
+    /// ```
     NotEqual,
 }
 
