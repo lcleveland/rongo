@@ -4,12 +4,43 @@ use std::fmt;
 /// The size of the minimap icon
 pub enum Size {
     /// Disable the minimap icon
+    ///
+    /// # Example
+    /// ```
+    /// # use libfilter::Size;
+    /// let size = Size::Disable;
+    /// # assert_eq!(size.to_string(), "Disable");
+    /// ```
     Disable,
+
     /// Small icon
+    ///
+    /// # Example
+    /// ```
+    /// # use libfilter::Size;
+    /// let size = Size::Small;
+    /// # assert_eq!(size.to_string(), "Small");
+    /// ```
     Small,
+
     /// Medium icon
+    ///
+    /// # Example
+    /// ```
+    /// # use libfilter::Size;
+    /// let size = Size::Medium;
+    /// # assert_eq!(size.to_string(), "Medium");
+    /// ```
     Medium,
+
     /// Largest icon
+    ///
+    /// # Example
+    /// ```
+    /// # use libfilter::Size;
+    /// let size = Size::Largest;
+    /// # assert_eq!(size.to_string(), "Largest");
+    /// ```
     Largest,
 }
 
