@@ -22,11 +22,18 @@ use std::fmt;
 /// `Condition`
 /// ```
 /// # use libfilter::line::condition::Condition;
-/// # use libfilter::line::action;
 /// # use libfilter::Operator;
 /// # use libfilter::line::Line;
 /// let line = Line::Condition(Condition::AreaLevel((Operator::GreaterThan, 1)));
 /// # assert_eq!(line.to_string(), "AreaLevel > 1");
+/// ```
+///
+/// `Action`
+/// ```
+/// # use libfilter::line::action::Action;
+/// # use libfilter::line::Line;
+/// let line = Line::Action(Action::SetFontSize(16));
+/// # assert_eq!(line.to_string(), "SetFontSize 16");
 /// ```
 pub enum Line {
     /// A condition is used as a test to filter items
