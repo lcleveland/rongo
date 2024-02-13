@@ -82,51 +82,198 @@ pub enum Condition {
     Class(String),
 
     /// The base type of the item. Specifying a part of a base type name is allowed and will match any of the base types with that text in the name.
+    ///
+    /// `String`: The name of the base type to match.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let base_type = Condition::BaseType(String::from("Iron Ring"));
+    /// # assert_eq!(base_type.to_string(), "BaseType \"Iron Ring\"");
+    /// ```
     BaseType(String),
 
     /// The prophecy name. Specifying a part of a prophecy name is allowed and will match any of the prophecies with that text in the name. Prophecies have the Class type "Stackable Currency".
+    ///
+    /// `String`: The name of the prophecy to match.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let prophecy = Condition::Prophecy(String::from("Twice Enchanted"));
+    /// # assert_eq!(prophecy.to_string(), "Prophecy \"Twice Enchanted\"");
+    /// ```
     Prophecy(String),
 
     /// The size of the largest group of linked sockets that the item has.
+    ///
+    /// `Operator`: A value from the [Operator] enum.
+    /// `u8`: The value to test.
+    /// # Example
+    /// ```
+    /// # use libfilter::Operator;
+    /// # use libfilter::line::condition::Condition;
+    /// let linked_sockets = Condition::LinkedSockets((Operator::GreaterThan, 1));
+    /// # assert_eq!(linked_sockets.to_string(), "LinkedSockets > 1");
+    /// ```
     LinkedSockets((Operator, u8)),
 
     /// Supports a list of groups that each one represents linked sockets containing a specific set of colors, at least one group must be matched for the condition to pass.
+    ///
+    /// `Operator`: A value from the [Operator] enum.
+    /// `String`: The color sequence to test.
+    /// `u8`: The longest link on the item.
+    /// # Example
+    /// ```
+    /// # use libfilter::Operator;
+    /// # use libfilter::line::condition::Condition;
+    /// let socket_group = Condition::SocketGroup((Operator::GreaterThanOrEqual, String::from("GGG"), 5));
+    /// # assert_eq!(socket_group.to_string(), "SocketGroup >= 5GGG");
+    /// ```
     SocketGroup((Operator, String, u8)),
 
     /// Does the exact same thing as [SocketGroup] but does not require the sockets to be linked.
+    ///
+    /// `Operator`: A value from the [Operator] enum.
+    /// `String`: The color sequence to test.
+    /// `u8`: The number of sockets on the item.
+    /// # Example
+    /// ```
+    /// # use libfilter::Operator;
+    /// # use libfilter::line::condition::Condition;
+    /// let sockets = Condition::Sockets((Operator::GreaterThanOrEqual, String::from("GGG"), 5));
+    /// # assert_eq!(sockets.to_string(), "Sockets >= 5GGG");
+    /// ```
     Sockets((Operator, String, u8)),
 
     /// The number of slots the item takes on the Y-axis (verical axis), i.e. the height of the item.
+    ///
+    /// `Operator`: A value from the [Operator] enum.
+    /// `u8`: The value to test.
+    /// # Example
+    /// ```
+    /// # use libfilter::Operator;
+    /// # use libfilter::line::condition::Condition;
+    /// let height = Condition::Height((Operator::GreaterThan, 1));
+    /// # assert_eq!(height.to_string(), "Height > 1");
+    /// ```
     Height((Operator, u8)),
 
     /// The number of slots the item takes on the X-axis (horizontal axis), i.e. the width of the item.
+    ///
+    /// `Operator`: A value from the [Operator] enum.
+    /// `u8`: The value to test.
+    /// # Example
+    /// ```
+    /// # use libfilter::Operator;
+    /// # use libfilter::line::condition::Condition;
+    /// let width = Condition::Width((Operator::GreaterThan, 1));
+    /// # assert_eq!(width.to_string(), "Width > 1");
+    /// ```
     Width((Operator, u8)),
 
     /// Filter by mods on an item by name.
+    ///
+    /// `String`: The name of the mod to match.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let mod_name = Condition::HasExplicitMod(String::from("Tyrannical"));
+    /// # assert_eq!(mod_name.to_string(), "HasExplicitMod \"Tyrannical\"");
+    /// ```
     HasExplicitMod(String),
 
     /// If an item has any enchantment from the Labyrinth.
+    ///
+    /// `bool`: If the item has any enchantment from the Labyrinth.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let any_enchantment = Condition::AnyEnchantment(true);
+    /// # assert_eq!(any_enchantment.to_string(), "AnyEnchantment true");
+    /// ```
     AnyEnchantment(bool),
 
     /// Filter by enchantments.
+    ///
+    /// `String`: The name of the enchantment to match.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let enchantment = Condition::HasEnchantment(String::from("Edict of War"));
+    /// # assert_eq!(enchantment.to_string(), "HasEnchantment \"Edict of War\"");
+    /// ```
     HasEnchantment(String),
 
     /// Filter Cluster Jewels by enchantment type.
+    ///
+    /// `String`: The name of the enchantment to match.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let enchantment = Condition::EnchantmentPassiveNode(String::from("increased Damage with Two Handed Weapons"));
+    /// # assert_eq!(enchantment.to_string(), "EnchantmentPassiveNode \"increased Damage with Two Handed Weapons\"");
+    /// ```
     EnchantmentPassiveNode(String),
 
     /// Filter Cluster Jewels by the number of enchantments. Only checks the "Adds X passive skills" modifier.
+    ///
+    /// `Operator`: A value from the [Operator] enum.
+    /// `u8`: The number of enchantments to match.
+    /// # Example
+    /// ```
+    /// # use libfilter::Operator;
+    /// # use libfilter::line::condition::Condition;
+    /// let enchantment = Condition::EnchantmentPassiveNum((Operator::GreaterThan, 1));
+    /// # assert_eq!(enchantment.to_string(), "EnchantmentPassiveNum > 1");
+    /// ```
     EnchantmentPassiveNum((Operator, u8)),
 
     /// Currency stack size.
+    ///
+    /// `Operator`: A value from the [Operator] enum.
+    /// `u8`: The value to test.
+    /// # Example
+    /// ```
+    /// # use libfilter::Operator;
+    /// # use libfilter::line::condition::Condition;
+    /// let stack_size = Condition::StackSize((Operator::GreaterThan, 1));
+    /// # assert_eq!(stack_size.to_string(), "StackSize > 1");
+    /// ```
     StackSize((Operator, u8)),
 
     /// The level of the gem.
+    ///
+    /// `Operator`: A value from the [Operator] enum.
+    /// `u8`: The value to test.
+    /// # Example
+    /// ```
+    /// # use libfilter::Operator;
+    /// # use libfilter::line::condition::Condition;
+    /// let gem_level = Condition::GemLevel((Operator::GreaterThan, 1));
+    /// # assert_eq!(gem_level.to_string(), "GemLevel > 1");
+    /// ```
     GemLevel((Operator, u8)),
 
     /// The [GemQuality] of the gem.
+    ///
+    /// `GemQuality`: A value from the [GemQuality] enum.
+    /// # Example
+    /// ```
+    /// # use libfilter::GemQuality;
+    /// # use libfilter::line::condition::Condition;
+    /// let gem_quality = Condition::GemQualityType(GemQuality::Superior);
+    /// # assert_eq!(gem_quality.to_string(), "GemQualityType Superior");
+    /// ```
     GemQualityType(GemQuality),
 
     /// If an item has alternate quality or not.
+    ///
+    /// `bool`: If the item has alternate quality.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let alt_quality = Condition::AlternativeQuality(true);
+    /// # assert_eq!(alt_quality.to_string(), "AlternativeQuality true");
+    /// ```
     AlternativeQuality(bool),
 
     /// If an item is an Replica or not.
@@ -185,9 +332,9 @@ impl fmt::Display for Condition {
             Condition::Prophecy(val) => write!(f, "Prophecy \"{}\"", val),
             Condition::LinkedSockets((op, val)) => write!(f, "LinkedSockets {} {}", op, val),
             Condition::SocketGroup((op, val, count)) => {
-                write!(f, "SocketGroup {} {} {}", op, val, count)
+                write!(f, "SocketGroup {} {}{}", op, count, val)
             }
-            Condition::Sockets((op, val, count)) => write!(f, "Sockets {} {} {}", op, val, count),
+            Condition::Sockets((op, val, count)) => write!(f, "Sockets {} {}{}", op, count, val),
             Condition::Height((op, val)) => write!(f, "Height {} {}", op, val),
             Condition::Width((op, val)) => write!(f, "Width {} {}", op, val),
             Condition::HasExplicitMod(val) => write!(f, "HasExplicitMod \"{}\"", val),
