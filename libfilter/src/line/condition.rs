@@ -277,45 +277,154 @@ pub enum Condition {
     AlternativeQuality(bool),
 
     /// If an item is an Replica or not.
+    ///
+    /// `bool`: If the item is an Replica.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let replica = Condition::Replica(true);
+    /// # assert_eq!(replica.to_string(), "Replica true");
+    /// ```
     Replica(bool),
 
     /// If an item is identified or not.
+    ///
+    /// `bool`: If the item is identified.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let identified = Condition::Identified(true);
+    /// # assert_eq!(identified.to_string(), "Identified true");
+    /// ```
     Identified(bool),
 
     /// If an item is corrupted or not.
+    ///
+    /// `bool`: If the item is corrupted.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let corrupted = Condition::Corrupted(true);
+    /// # assert_eq!(corrupted.to_string(), "Corrupted true");
+    /// ```
     Corrupted(bool),
 
     /// How many corrupted mods are present.
+    ///
+    /// `Operator`: A value from the [Operator] enum.
+    /// `u8`: The number of corrupted mods.
+    /// # Example
+    /// ```
+    /// # use libfilter::Operator;
+    /// # use libfilter::line::condition::Condition;
+    /// let corrupted_mods = Condition::CorruptedMods((Operator::GreaterThan, 1));
+    /// # assert_eq!(corrupted_mods.to_string(), "CorruptedMods > 1");
+    /// ```
     CorruptedMods((Operator, u8)),
 
     /// If an item is mirrored or not.
+    ///
+    /// `bool`: If the item is mirrored.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let mirrored = Condition::Mirrored(true);
+    /// # assert_eq!(mirrored.to_string(), "Mirrored true");
+    /// ```
     Mirrored(bool),
 
     /// If an item is an Elder Item or not.
+    ///
+    /// `bool`: If the item is an Elder Item.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let elder_item = Condition::ElderItem(true);
+    /// # assert_eq!(elder_item.to_string(), "ElderItem true");
+    /// ```
     ElderItem(bool),
 
     /// If an item is a Shaper Item or not.
+    ///
+    /// `bool`: If the item is a Shaper Item.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let shaper_item = Condition::ShaperItem(true);
+    /// # assert_eq!(shaper_item.to_string(), "ShaperItem true");
+    /// ```
     ShaperItem(bool),
 
     /// If an item has an [Influence]
+    ///
+    /// `Influence`: A value from the [Influence] enum
+    /// # Example
+    /// ```
+    /// # use libfilter::Influence;
+    /// # use libfilter::line::condition::Condition;
+    /// let influence = Condition::HasInfluence(Influence::Shaper);
+    /// # assert_eq!(influence.to_string(), "HasInfluence Shaper");
+    /// ```
     HasInfluence(Influence),
 
     /// If an item is fractured or not.
+    ///
+    /// `bool`: If the item is fractured.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let fractured_item = Condition::FracturedItem(true);
+    /// # assert_eq!(fractured_item.to_string(), "FracturedItem true");
+    /// ```
     FracturedItem(bool),
 
     /// If an item is a Synthesised item or not
+    ///
+    /// `bool`: If the item is a Synthesised item.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let synthesised_item = Condition::SynthesisedItem(true);
+    /// # assert_eq!(synthesised_item.to_string(), "SynthesisedItem true");
+    /// ```
     SynthesisedItem(bool),
 
     /// If the map is elder or not.
     ElderMap(bool),
 
     /// If the map is Shaped or not.
+    ///
+    /// `bool`: If the map is Shaped.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let shaped_map = Condition::ShapedMap(true);
+    /// # assert_eq!(shaped_map.to_string(), "ShapedMap true");
+    /// ```
     ShapedMap(bool),
 
     /// If the map is Blighted or not.
+    ///
+    /// `bool`: If the map is Blighted.
+    /// # Example
+    /// ```
+    /// # use libfilter::line::condition::Condition;
+    /// let blighted_map = Condition::BlightedMap(true);
+    /// # assert_eq!(blighted_map.to_string(), "BlightedMap true");
+    /// ```
     BlightedMap(bool),
 
     /// The map tier of the map.
+    ///
+    /// `Operator`: A value from the [Operator] enum.
+    /// `u8`: The map tier of the map.
+    /// # Example
+    /// ```
+    /// # use libfilter::Operator;
+    /// # use libfilter::line::condition::Condition;
+    /// let map_tier = Condition::MapTier((Operator::GreaterThan, 1));
+    /// # assert_eq!(map_tier.to_string(), "MapTier > 1");
+    /// ```
     MapTier((Operator, u8)),
 }
 
