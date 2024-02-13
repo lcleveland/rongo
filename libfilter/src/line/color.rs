@@ -4,28 +4,123 @@ use std::fmt;
 /// Predefined colors for the minimap icon and light beam
 pub enum Color {
     /// Red
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Color;
+    /// let color = Color::Red;
+    /// # assert_eq!(color.to_string(), "Red");
+    /// ```
     Red,
+
     /// Green
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Color;
+    /// let color = Color::Green;
+    /// # assert_eq!(color.to_string(), "Green");
+    /// ```
     Green,
+
     /// Blue
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Color;
+    /// let color = Color::Blue;
+    /// # assert_eq!(color.to_string(), "Blue");
+    /// ```
     Blue,
+
     /// Brown
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Color;
+    /// let color = Color::Brown;
+    /// # assert_eq!(color.to_string(), "Brown");
+    /// ```
     Brown,
+
     /// White
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Color;
+    /// let color = Color::White;
+    /// # assert_eq!(color.to_string(), "White");
+    /// ```
     White,
+
     /// Yellow
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Color;
+    /// let color = Color::Yellow;
+    /// # assert_eq!(color.to_string(), "Yellow");
+    /// ```
     Yellow,
+
     /// Cyan
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Color;
+    /// let color = Color::Cyan;
+    /// # assert_eq!(color.to_string(), "Cyan");
+    /// ```
     Cyan,
+
     /// Grey
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Color;
+    /// let color = Color::Grey;
+    /// # assert_eq!(color.to_string(), "Grey");
+    /// ```
     Grey,
+
     /// Orange
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Color;
+    /// let color = Color::Orange;
+    /// # assert_eq!(color.to_string(), "Orange");
+    /// ```
     Orange,
+
     /// Pink
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Color;
+    /// let color = Color::Pink;
+    /// # assert_eq!(color.to_string(), "Pink");
+    /// ```
     Pink,
+
     /// Purple
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Color;
+    /// let color = Color::Purple;
+    /// # assert_eq!(color.to_string(), "Purple");
+    /// ```
     Purple,
+
     /// No color
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Color;
+    /// let color = Color::None;
+    /// # assert_eq!(color.to_string(), "None");
+    /// ```
     None,
 }
 
