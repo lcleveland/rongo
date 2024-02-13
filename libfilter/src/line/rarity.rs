@@ -4,12 +4,43 @@ use std::fmt;
 /// The rarity of an item
 pub enum Rarity {
     /// Normal
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Rarity;
+    /// let rarity = Rarity::Normal;
+    /// # assert_eq!(rarity.to_string(), "Normal");
+    /// ```
     Normal,
+
     /// Magic
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Rarity;
+    /// let rarity = Rarity::Magic;
+    /// # assert_eq!(rarity.to_string(), "Magic");
+    /// ```
     Magic,
+
     /// Rare
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Rarity;
+    /// let rarity = Rarity::Rare;
+    /// # assert_eq!(rarity.to_string(), "Rare");
+    /// ```
     Rare,
+
     /// Unique
+    ///
+    /// Example:
+    /// ```
+    /// # use libfilter::Rarity;
+    /// let rarity = Rarity::Unique;
+    /// # assert_eq!(rarity.to_string(), "Unique");
+    /// ```
     Unique,
 }
 
