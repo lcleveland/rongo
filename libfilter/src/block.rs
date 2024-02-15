@@ -9,16 +9,18 @@ use std::fmt;
 /// # use libfilter::block::Block;
 /// # use libfilter::line::Line;
 /// # use libfilter::line::condition::Condition;
+/// # use libfilter::line::action::Action;
+/// # use libfilter::RGBA;
 /// # use libfilter::Operator;
 /// let block = Block {
 ///     lines: vec![
-///         Line::Condition(Condition::AreaLevel((libfilter::Operator::GreaterThan, 1))),
-///         Line::Condition(Condition::AreaLevel((libfilter::Operator::GreaterThan, 1))),
-///         Line::Condition(Condition::AreaLevel((libfilter::Operator::GreaterThan, 1))),
+///         Line::Condition(Condition::AreaLevel((Operator::GreaterThan, 1))),
+///         Line::Condition(Condition::Identified(true)),
+///         Line::Action(Action::SetBorderColor(RGBA{r: 255, g: 0, b: 0, a: 255})),
 ///         ],
 ///         is_hidden: false
 ///         };
-/// # assert_eq!(block.to_string(), "Show\n\tAreaLevel > 1\n\tAreaLevel > 1\n\tAreaLevel > 1");
+/// # assert_eq!(block.to_string(), "Show\n\tAreaLevel > 1\n\tIdentified true\n\tSetBorderColor 255 0 0 255");
 /// ```
 pub struct Block {
     /// The lines in the block.
