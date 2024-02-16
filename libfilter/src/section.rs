@@ -14,8 +14,8 @@ use std::fmt;
 /// # use libfilter::Operator;
 /// # use libfilter::line::Line;
 /// let section = Section {
-///     header: "###FFFF".to_string(),
-///     description: "###Customize what players see when an item drops in the game.".to_string(),
+///     header: "FFFF".to_string(),
+///     description: "Customize what players see when an item drops in the game.".to_string(),
 ///     blocks: vec![
 ///         Block {
 ///             lines: vec![
@@ -43,8 +43,10 @@ pub struct Section {
 impl fmt::Display for Section {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let mut section_string = String::new();
+        section_string.push_str("###");
         section_string.push_str(&self.header);
         section_string.push_str("\n");
+        section_string.push_str("###");
         section_string.push_str(&self.description);
         section_string.push_str("\n");
         section_string.push_str(&self.blocks.iter().join("\n"));
