@@ -23,10 +23,8 @@ use std::fmt;
 ///                 Line::Condition(Condition::Identified(true)),
 ///                 Line::Action(Action::SetBorderColor(RGBA{r: 255, g: 0, b: 0, a: 255})),
 ///                 ],
-///                 is_hidden: false
-///                 },
-///                 ],
-///                 };
+///             is_hidden: false
+///                 },],};
 /// # assert_eq!(section.to_string(), "###FFFF\n###Customize what players see when an item drops in the game.\nShow\n\tAreaLevel > 1\n\tIdentified true\n\tSetBorderColor 255 0 0 255");
 /// ```
 pub struct Section {
